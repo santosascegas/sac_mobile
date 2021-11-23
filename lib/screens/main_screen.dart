@@ -4,6 +4,8 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:santos_as_cegas/screens/tela_principal.dart';
 import 'package:santos_as_cegas/screens/agendamento.dart';
 import 'package:santos_as_cegas/screens/fale_conosco.dart';
+import 'package:santos_as_cegas/screens/faq.dart';
+import 'package:santos_as_cegas/screens/trajeto.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -21,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: onPageChanged,
-        children: List.generate(5, (index) => FaleConosco()),
+        children: List.generate(5, (index) => Trajeto()),
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

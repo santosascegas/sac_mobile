@@ -1,32 +1,51 @@
 import 'package:flutter/material.dart';
 
-class TelaPrincipal extends StatefulWidget {
+class Trajeto extends StatefulWidget {
+  const Trajeto({Key key}) : super(key: key);
+
   @override
-  _TelaPrincipalState createState() => _TelaPrincipalState();
+  _TrajetoState createState() {
+    return _TrajetoState();
+  }
 }
 
-class _TelaPrincipalState extends State<TelaPrincipal> {
+class _TrajetoState extends State<Trajeto> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[],
-      ),
-      body: Stack(children: <Widget>[
-        ListView(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          children: <Widget>[
-            SizedBox(height: 20.0),
-            Text(
-              "Trajeto",
-              style: TextStyle(
-                fontSize: 32.0,
-                fontWeight: FontWeight.w900,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: new EdgeInsets.all(15.0),
+          child: Text(
+            "Trajeto",
+            style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold, color: Colors.red),
+          ),
+        ),
+        Padding(
+          padding: new EdgeInsets.all(15.0),
+          child: Text(
+            "Observe no mapa e nas fotos a seguir as paradas do trajeto do Santos às cegas.",
+            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+        ),
+        Container(
+          height: 250,
+          width: 330,
+          child: ClipRRect(
+            child: Image.asset(
+              "assets/trajeto/maps-template.png",
+              height: 250,
+              width: 330,
+              fit: BoxFit.cover,
             ),
-          ],
-        )
-      ]),
+          ),
+        ),
+      ],
     );
+  }
+
+  buildTrajetoList() {
+    return Container();
   }
 }

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:santos_as_cegas/models/FaleConoscoClass';
-import 'package:santos_as_cegas/api/FaleConoscoApi';
-
 class FaleConosco extends StatefulWidget {
   const FaleConosco({Key key}) : super(key: key);
 
@@ -20,7 +17,7 @@ class _FaleConoscoState extends State<FaleConosco> {
     return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: new EdgeInsets.all(15.0),
@@ -33,7 +30,7 @@ class _FaleConoscoState extends State<FaleConosco> {
             padding: new EdgeInsets.all(15.0),
             child: Text(
               "Será um prazer ouvi-lo, sua opinião é muito importante para o nosso trabalho",
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ),
           Padding(
@@ -123,7 +120,7 @@ class _FaleConoscoState extends State<FaleConosco> {
                 }
               },
               child: const Text('Enviar'),
-              style: ElevatedButton.styleFrom(primary: Colors.grey, padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20), textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black)),
+              style: ElevatedButton.styleFrom(primary: Color(0xFFB6000B), padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20), textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black)),
             ),
           ),
         ],

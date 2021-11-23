@@ -3,9 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'package:santos_as_cegas/models/FaleConoscoClass';
-
-Future<FaleConoscoClass> sendFaleConosco(String nome, String email, String telefone, String assunto, String mensagem) async {
+Future<> sendFaleConosco(String nome, String email, String telefone, String assunto, String mensagem) async {
   final response = await http.post(
     Uri.parse(''),
     headers: <String, String>{
