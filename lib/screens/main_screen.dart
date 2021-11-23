@@ -5,7 +5,7 @@ import 'package:santos_as_cegas/screens/tela_principal.dart';
 import 'package:santos_as_cegas/screens/agendamento.dart';
 import 'package:santos_as_cegas/screens/fale_conosco.dart';
 import 'package:santos_as_cegas/screens/faq.dart';
-import 'package:santos_as_cegas/screens/trajeto.dart';
+import 'package:santos_as_cegas/screens/trajetos.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -16,6 +16,12 @@ class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
   int _page = 0;
 
+  final List<Widget> _children = [
+    Trajetos(),
+    Faq(),
+    FaleConosco(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: onPageChanged,
-        children: List.generate(5, (index) => Trajeto()),
+        children: _children,
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

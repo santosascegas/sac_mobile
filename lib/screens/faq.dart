@@ -36,7 +36,7 @@ class _FaqState extends State<Faq> {
       child: ListView.builder(
         itemCount: duvidasData.length,
         itemBuilder: (BuildContext context, int index) {
-          Map duvida = duvidasData.reversed.toList()[index];
+          Map duvida = duvidasData.toList()[index];
           return Duvida(
             duvidaLocal: duvida,
           );

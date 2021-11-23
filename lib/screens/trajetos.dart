@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Trajeto extends StatefulWidget {
-  const Trajeto({Key key}) : super(key: key);
+import 'package:santos_as_cegas/widgets/trajeto.dart';
+import 'package:santos_as_cegas/util/trajetos_data.dart';
+
+class Trajetos extends StatefulWidget {
+  const Trajetos({Key key}) : super(key: key);
 
   @override
-  _TrajetoState createState() {
-    return _TrajetoState();
+  _TrajetosState createState() {
+    return _TrajetosState();
   }
 }
 
-class _TrajetoState extends State<Trajeto> {
+class _TrajetosState extends State<Trajetos> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,11 +44,25 @@ class _TrajetoState extends State<Trajeto> {
             ),
           ),
         ),
+        buildTrajetoList()
       ],
     );
   }
 
   buildTrajetoList() {
-    return Container();
+    return Padding(
+        padding: new EdgeInsets.all(15.0),
+        child: Container(
+          height: 100.0,
+          child: ListView.builder(
+            itemCount: trajetosData.length,
+            itemBuilder: (BuildContext context, int index) {
+              Map trajeto = trajetosData.toList()[index];
+              return Trajeto(
+                trajetoLocal: trajeto,
+              );
+            },
+          ),
+        ));
   }
 }

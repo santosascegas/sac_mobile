@@ -1,4 +1,4 @@
-List trajetos = [
+List trajetosData = [
   {
     "img": 'assets/trajeto/trajeto1.jpg',
     "nome": '100 anos de imigração japonesa'
