@@ -28,23 +28,11 @@ class _TrajetosState extends State<Trajetos> {
         Padding(
           padding: new EdgeInsets.all(15.0),
           child: Text(
-            "Observe no mapa e nas fotos a seguir as paradas do trajeto do Santos às cegas.",
+            "Observe a seguir as paradas do trajeto do Santos às cegas.",
             style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
-        Container(
-          height: 250,
-          width: 330,
-          child: ClipRRect(
-            child: Image.asset(
-              "assets/trajeto/maps-template.png",
-              height: 250,
-              width: 330,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        buildTrajetoList()
+        Expanded(child: buildTrajetoList())
       ],
     );
   }

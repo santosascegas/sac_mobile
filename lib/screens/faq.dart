@@ -16,7 +16,7 @@ class _FaqState extends State<Faq> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
           padding: new EdgeInsets.all(15.0),
@@ -25,7 +25,10 @@ class _FaqState extends State<Faq> {
             style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold, color: Colors.red),
           ),
         ),
-        buildFaqList(),
+        Expanded(
+          flex: 1,
+          child: buildFaqList(),
+        )
       ],
     );
   }

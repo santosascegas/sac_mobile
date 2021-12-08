@@ -16,11 +16,15 @@ class _MainScreenState extends State<MainScreen> {
   PageController _pageController;
   int _page = 0;
 
-  final List<Widget> _children = [
-    Trajetos(),
-    Faq(),
-    FaleConosco(),
-  ];
+  List<Widget> _childrenFunc() => [
+        TelaPrincipal(controller: _pageController),
+        Trajetos(),
+        Agendamento(controller: _pageController),
+        Faq(),
+        FaleConosco(),
+      ];
+
+  // final List<Widget> _children = this._childrenFunc();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: onPageChanged,
-        children: _children,
+        children: _childrenFunc(),
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
@@ -41,12 +45,14 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.red,
+          unselectedItemColor: Colors.black,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
                 Feather.home,
               ),
-              label: 'Home',
+              label: "Início",
             ),
             BottomNavigationBarItem(
               icon: Icon(
@@ -64,13 +70,13 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icon(
                 Feather.help_circle,
               ),
-              label: 'Duvidas',
+              label: "Dúvidas",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Feather.message_square,
               ),
-              label: 'Fale Conosco',
+              label: 'Contato',
             ),
           ],
           onTap: navigationTapped,
@@ -87,7 +93,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: 2);
+    _pageController = PageController(initialPage: 0);
   }
 
   @override

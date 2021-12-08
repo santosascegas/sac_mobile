@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Constants {
   static String appName = "Santos as Cegas";
@@ -19,6 +20,7 @@ class Constants {
     cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
       elevation: 0,
       textTheme: TextTheme(
         headline6: TextStyle(
