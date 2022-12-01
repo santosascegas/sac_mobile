@@ -37,9 +37,9 @@ class _AgendamentoFormState extends State<AgendamentoForm> {
           flexibleSpace: Container(
               decoration: BoxDecoration(
                   gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: <Color>[
-            Color(0xff8c1401),
-            Color(0xffff3f21)
-          ]))),
+                    Color(0xff8c1401),
+                    Color(0xffff3f21)
+                  ]))),
           bottom: PreferredSize(
               preferredSize: Size.fromHeight(80),
               child: Container(

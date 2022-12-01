@@ -19,6 +19,7 @@ class _AgendamentoCadastroState extends State<AgendamentoCadastro> {
 
   @override
   Widget build(BuildContext context) {
+    print(context);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,

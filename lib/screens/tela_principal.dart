@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'package:santos_as_cegas/widgets/custom_button.dart';
 import 'package:santos_as_cegas/widgets/custom_expandable.dart';
@@ -14,14 +13,6 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
-  YoutubePlayerController youtubeController = YoutubePlayerController(
-    initialVideoId: 'VLxquanRaNo',
-    flags: YoutubePlayerFlags(
-      autoPlay: false,
-      mute: true,
-    ),
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,28 +30,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         Container(padding: new EdgeInsets.all(15.0), child: CustomExpandable()),
         Container(
           padding: new EdgeInsets.all(15.0),
-          child: YoutubePlayer(
-            controller: youtubeController,
-            showVideoProgressIndicator: true,
-            liveUIColor: Colors.red,
-            progressIndicatorColor: Colors.red,
-          ),
-        ),
-        Padding(
-            padding: new EdgeInsets.only(left: 15.0, top: 5.0, bottom: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Santos ás Cegas - Teaser",
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
-                ),
-                Text(
-                  "Renato Frosch",
-                  style: TextStyle(fontSize: 15.0, color: Colors.black),
-                ),
-              ],
-            )),
+        )
       ],
     ));
   }

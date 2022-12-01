@@ -8,7 +8,7 @@ class FormQuestions extends StatelessWidget {
   final ValueChanged<int> onSelectOption;
   final PageController controller;
 
-  const FormQuestions({Key key, @required this.onChangedPage, @required this.onSelectOption, @required this.controller}) : super(key: key);
+  FormQuestions({Key key, @required this.onChangedPage, @required this.onSelectOption, @required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => PageView.builder(
@@ -34,7 +34,7 @@ class FormQuestions extends StatelessWidget {
                 child: Column(children: [
                   GestureDetector(
                     onTap: () => {
-                      onClickedOption('a')
+                      onClickedOption('a'),
                     },
                     child: Container(
                         // color: rowOptionABackground,

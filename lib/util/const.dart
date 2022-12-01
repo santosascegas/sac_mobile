@@ -16,19 +16,22 @@ class Constants {
   static ThemeData lightTheme = ThemeData(
     backgroundColor: lightBG,
     primaryColor: lightPrimary,
-    accentColor: lightAccent,
-    cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle.dark,
-      elevation: 0,
-      textTheme: TextTheme(
+      elevation: 0, toolbarTextStyle: TextTheme(
         headline6: TextStyle(
           color: darkBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,
         ),
-      ),
+      ).bodyText2, titleTextStyle: TextTheme(
+        headline6: TextStyle(
+          color: darkBG,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w800,
+        ),
+      ).headline6,
     ),
   );
 
@@ -37,9 +40,7 @@ class Constants {
     brightness: Brightness.dark,
     backgroundColor: darkBG,
     primaryColor: darkPrimary,
-    accentColor: darkAccent,
     scaffoldBackgroundColor: darkBG,
-    cursorColor: darkAccent,
     appBarTheme: AppBarTheme(
       elevation: 0,
       textTheme: TextTheme(

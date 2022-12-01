@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:santos_as_cegas/screens/blog.dart';
 
 import 'package:santos_as_cegas/screens/tela_principal.dart';
 import 'package:santos_as_cegas/screens/agendamento.dart';
@@ -21,6 +22,7 @@ class _MainScreenState extends State<MainScreen> {
         Trajetos(),
         Agendamento(controller: _pageController),
         Faq(),
+        Blog(),
         FaleConosco(),
       ];
 
@@ -38,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Theme.of(context).primaryColor,
-          primaryColor: Theme.of(context).accentColor,
+          primaryColor: Theme.of(context).colorScheme.secondary,
           textTheme: Theme.of(context).textTheme.copyWith(
                 caption: TextStyle(color: Colors.grey[500]),
               ),
@@ -71,6 +73,12 @@ class _MainScreenState extends State<MainScreen> {
                 Feather.help_circle,
               ),
               label: "Dúvidas",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Feather.book,
+              ),
+              label: "Blog",
             ),
             BottomNavigationBarItem(
               icon: Icon(
