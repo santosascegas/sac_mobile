@@ -7,6 +7,7 @@ import 'package:santos_as_cegas/screens/agendamento.dart';
 import 'package:santos_as_cegas/screens/fale_conosco.dart';
 import 'package:santos_as_cegas/screens/faq.dart';
 import 'package:santos_as_cegas/screens/trajetos.dart';
+import 'package:santos_as_cegas/screens/agendamento_form.dart';
 
 class MainScreen extends StatefulWidget {
   @override

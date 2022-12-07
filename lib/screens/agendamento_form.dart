@@ -1,71 +1,127 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/rendering.dart';
 import 'package:santos_as_cegas/util/form_data.dart';
-import 'package:santos_as_cegas/widgets/form.dart';
-import 'package:santos_as_cegas/widgets/questions_numbers.dart';
-import 'package:santos_as_cegas/screens/agendamento_participacao.dart';
+
+import 'agendamento_participacao.dart';
 
 class AgendamentoForm extends StatefulWidget {
-  const AgendamentoForm({Key key}) : super(key: key);
+  final appointment;
+  final cadastro;
+  const AgendamentoForm(
+      {Key key, @required this.appointment, @required this.cadastro})
+      : super(key: key);
 
   @override
   _AgendamentoFormState createState() {
+    print(this.appointment.toString());
+    print(this.cadastro.name.toString());
     return _AgendamentoFormState();
   }
 }
 
 class _AgendamentoFormState extends State<AgendamentoForm> {
-  PageController controller;
-  String question;
+  List doctorsNote = List.filled(formData.length, null);
+  bool error = false;
 
   @override
-  void initState() {
-    super.initState();
-
-    controller = PageController();
-    question = formData.first;
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: Visibility(
+                visible: error,
+                child: Text(
+                  "Por favor responda todas as perguntas para continuar!",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                )),
+          ),
+          Flexible(
+              child: ListView(
+            shrinkWrap: true,
+            children: [
+              for (int x = 0; x < formData.length; x++)
+                create_question(formData[x], x)
+            ],
+          )),
+          Padding(padding: const EdgeInsets.all(15)),
+          SizedBox(
+              width: 150,
+              height: 50,
+              child: ElevatedButton(
+                child: const Text("Próximo"),
+                onPressed: () => {
+                  if (doctorsNote.contains(null))
+                    {
+                      setState(() => {error = true}),
+                      SemanticsService.announce(
+                          "Erro. Por favor responda todas as perguntas para continuar!",
+                          TextDirection.ltr)
+                    }
+                  else
+                    {
+                      setState(() => {error = false}),
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AgendamentoParticipacao(
+                                appointment: widget.appointment,
+                                cadastro: widget.cadastro,
+                                atestado:
+                                    doctorsNote.contains(true) ? true : false,
+                              )))
+                    }
+                },
+              )),
+          Padding(padding: const EdgeInsets.all(15)),
+        ],
+      ),
+    );
   }
 
-  @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-          title: Text('Consentimento de Participação', style: TextStyle(color: Colors.white, fontSize: 18)),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-          elevation: 7,
-          actions: <Widget>[],
-          flexibleSpace: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: <Color>[
-                    Color(0xff8c1401),
-                    Color(0xffff3f21)
-                  ]))),
-          bottom: PreferredSize(
-              preferredSize: Size.fromHeight(80),
-              child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: QuestionsNumbersWidget(
-                      questions: formData,
-                      question: question,
-                      onClickedNumber: (index) {
-                        nextFormQuestion(index, true, context);
-                      })))),
-      body: FormQuestions(onChangedPage: (index) => nextFormQuestion(index, false, context), onSelectOption: (index) => nextFormQuestion(index, true, context), controller: controller));
-
-  void nextFormQuestion(int index, bool jump, BuildContext context) {
-    final nextPage = controller.page + 1;
-    final indexPage = index ?? nextPage.toInt();
-
-    if (indexPage == formData.length) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AgendamentoParticipacao()));
-    }
-
-    setState(() {
-      question = formData[indexPage];
-    });
-
-    if (jump) {
-      controller.jumpToPage(indexPage);
-    }
+  Widget create_question(String str, int id) {
+    return Container(
+      child: Column(
+        children: [
+          Padding(padding: const EdgeInsets.all(5)),
+          Text(str.toString(),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                  width: 180,
+                  height: 80,
+                  child: RadioListTile(
+                    title: Text("Sim"),
+                    value: true,
+                    groupValue: doctorsNote[id],
+                    onChanged: (dynamic value) {
+                      setState(() {
+                        doctorsNote[id] = value;
+                      });
+                    },
+                  )),
+              SizedBox(
+                  width: 180,
+                  height: 80,
+                  child: RadioListTile(
+                    title: Text("Não"),
+                    value: false,
+                    groupValue: doctorsNote[id],
+                    onChanged: (dynamic value) {
+                      setState(() {
+                        doctorsNote[id] = value;
+                      });
+                    },
+                  ))
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

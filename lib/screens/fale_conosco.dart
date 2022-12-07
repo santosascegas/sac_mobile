@@ -21,121 +21,121 @@ class _FaleConoscoState extends State<FaleConosco> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: new EdgeInsets.all(15.0),
-            child: Text(
-              "Fale Conosco",
-              style: TextStyle(
-                  fontSize: 35.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red),
-            ),
-          ),
-          Padding(
-            padding: new EdgeInsets.all(15.0),
-            child: Text(
-              "Será um prazer ouvi-lo, sua opinião é muito importante para o nosso trabalho",
-              style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Nome Completo',
-                border: OutlineInputBorder(),
+        body: SingleChildScrollView(child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: new EdgeInsets.all(15.0),
+                child: Text(
+                  "Fale Conosco",
+                  style: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                ),
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Nome obrigatorio';
-                }
-                return null;
-              },
-              onSaved: (String val) => nome = val,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'E-mail',
-                border: OutlineInputBorder(),
+              Padding(
+                padding: new EdgeInsets.all(15.0),
+                child: Text(
+                  "Será um prazer ouvi-lo, sua opinião é muito importante para o nosso trabalho",
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'E-mail obrigatorio';
-                }
-                return null;
-              },
-              onSaved: (String val) => email = val,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Telefone',
-                border: OutlineInputBorder(),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Nome Completo',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Nome obrigatorio';
+                    }
+                    return null;
+                  },
+                  onSaved: (String val) => nome = val,
+                ),
               ),
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                TelefoneInputFormatter(),
-              ],
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Telefone obrigatório';
-                }
-                return null;
-              },
-              onSaved: (String val) => telefone = val,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Assunto',
-                border: OutlineInputBorder(),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'E-mail',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'E-mail obrigatorio';
+                    }
+                    return null;
+                  },
+                  onSaved: (String val) => email = val,
+                ),
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Assunto obrigatório';
-                }
-                return null;
-              },
-              onSaved: (String val) => assunto = val,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Mensagem',
-                border: OutlineInputBorder(),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Telefone',
+                    border: OutlineInputBorder(),
+                  ),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    TelefoneInputFormatter(),
+                  ],
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Telefone obrigatório';
+                    }
+                    return null;
+                  },
+                  onSaved: (String val) => telefone = val,
+                ),
               ),
-              maxLines: 4,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Mensagem obrigatória';
-                }
-                return null;
-              },
-              onSaved: (String val) => msg = val,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: ElevatedButton(
-                child: const Text("Enviar"),
-                onPressed: () => {
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Assunto',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Assunto obrigatório';
+                    }
+                    return null;
+                  },
+                  onSaved: (String val) => assunto = val,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Mensagem',
+                    border: OutlineInputBorder(),
+                  ),
+                  maxLines: 4,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Mensagem obrigatória';
+                    }
+                    return null;
+                  },
+                  onSaved: (String val) => msg = val,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: ElevatedButton(
+                    child: const Text("Enviar"),
+                    onPressed: () => {
                       showGeneralDialog(
                         context: context,
                         barrierColor: Colors.white,
@@ -143,7 +143,7 @@ class _FaleConoscoState extends State<FaleConosco> {
                         barrierLabel: 'Dialog',
                         transitionDuration: Duration(
                             milliseconds:
-                                200), // How long it takes to popup dialog after button click
+                            200), // How long it takes to popup dialog after button click
                         pageBuilder: (_, __, ___) {
                           // Makes widget fullscreen
                           return Scaffold(
@@ -162,11 +162,11 @@ class _FaleConoscoState extends State<FaleConosco> {
                                           child: Container(
                                             child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      new EdgeInsets.all(25.0),
+                                                  new EdgeInsets.all(25.0),
                                                   child: Text(
                                                       "Sua mensagem foi enviada com sucesso!",
                                                       style: TextStyle(
@@ -174,7 +174,7 @@ class _FaleConoscoState extends State<FaleConosco> {
                                                           color: Color(
                                                               0xff007E03)),
                                                       textAlign:
-                                                          TextAlign.center),
+                                                      TextAlign.center),
                                                 ),
                                                 Container(
                                                   height: 150,
@@ -190,45 +190,45 @@ class _FaleConoscoState extends State<FaleConosco> {
                                                 ),
                                                 Padding(
                                                   padding:
-                                                      new EdgeInsets.all(25.0),
+                                                  new EdgeInsets.all(25.0),
                                                   child: Text(
                                                       "Nós responderemos o mais rápido possível.",
                                                       style: TextStyle(
                                                           fontSize: 16.0,
                                                           color: Colors.black),
                                                       textAlign:
-                                                          TextAlign.center),
+                                                      TextAlign.center),
                                                 ),
                                                 ElevatedButton(
                                                   onPressed: () =>
                                                       Navigator.pop(context),
                                                   style:
-                                                      ElevatedButton.styleFrom(
-                                                          foregroundColor:
-                                                              Colors.black,
-                                                          backgroundColor:
-                                                              Colors.white,
-                                                          side: BorderSide(
-                                                            width: 1.0,
-                                                            color: Colors.black,
-                                                          ),
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          50)),
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal:
-                                                                      20,
-                                                                  vertical: 20),
-                                                          textStyle: TextStyle(
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: Colors
-                                                                  .black)),
+                                                  ElevatedButton.styleFrom(
+                                                      foregroundColor:
+                                                      Colors.black,
+                                                      backgroundColor:
+                                                      Colors.white,
+                                                      side: BorderSide(
+                                                        width: 1.0,
+                                                        color: Colors.black,
+                                                      ),
+                                                      shape: RoundedRectangleBorder(
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                              50)),
+                                                      padding: EdgeInsets
+                                                          .symmetric(
+                                                          horizontal:
+                                                          20,
+                                                          vertical: 20),
+                                                      textStyle: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                          FontWeight
+                                                              .bold,
+                                                          color: Colors
+                                                              .black)),
                                                   child: Text('Voltar'),
                                                 ),
                                               ],
@@ -240,7 +240,7 @@ class _FaleConoscoState extends State<FaleConosco> {
                                           child: Container(
                                             child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 Container(
                                                   height: 150,
@@ -256,47 +256,47 @@ class _FaleConoscoState extends State<FaleConosco> {
                                                 ),
                                                 Padding(
                                                   padding:
-                                                      EdgeInsets.only(top: 25),
+                                                  EdgeInsets.only(top: 25),
                                                   child: Text(
                                                       "Infelizmente não conseguimos enviar sua mensagem! Por favor, tente novamente mais tarde.",
                                                       style: TextStyle(
                                                           fontSize: 18.0,
                                                           color: Colors.red,
                                                           fontWeight:
-                                                              FontWeight.bold),
+                                                          FontWeight.bold),
                                                       textAlign:
-                                                          TextAlign.center),
+                                                      TextAlign.center),
                                                 ),
                                                 ElevatedButton(
                                                   onPressed: () =>
                                                       Navigator.pop(context),
                                                   style:
-                                                      ElevatedButton.styleFrom(
-                                                          foregroundColor:
-                                                              Colors.black,
-                                                          backgroundColor:
-                                                              Colors.white,
-                                                          side: BorderSide(
-                                                            width: 1.0,
-                                                            color: Colors.black,
-                                                          ),
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          50)),
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal:
-                                                                      20,
-                                                                  vertical: 20),
-                                                          textStyle: TextStyle(
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: Colors
-                                                                  .black)),
+                                                  ElevatedButton.styleFrom(
+                                                      foregroundColor:
+                                                      Colors.black,
+                                                      backgroundColor:
+                                                      Colors.white,
+                                                      side: BorderSide(
+                                                        width: 1.0,
+                                                        color: Colors.black,
+                                                      ),
+                                                      shape: RoundedRectangleBorder(
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                              50)),
+                                                      padding: EdgeInsets
+                                                          .symmetric(
+                                                          horizontal:
+                                                          20,
+                                                          vertical: 20),
+                                                      textStyle: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                          FontWeight
+                                                              .bold,
+                                                          color: Colors
+                                                              .black)),
                                                   child: Text('Voltar'),
                                                 ),
                                               ],
@@ -309,22 +309,22 @@ class _FaleConoscoState extends State<FaleConosco> {
                                         child: Container(
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               CircularProgressIndicator(
                                                 color: Colors.red,
                                               ),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(top: 25),
+                                                EdgeInsets.only(top: 25),
                                                 child: Text("Enviando...",
                                                     style: TextStyle(
                                                         fontSize: 18.0,
                                                         color: Colors.black,
                                                         fontWeight:
-                                                            FontWeight.bold),
+                                                        FontWeight.bold),
                                                     textAlign:
-                                                        TextAlign.center),
+                                                    TextAlign.center),
                                               ),
                                             ],
                                           ),
@@ -339,24 +339,24 @@ class _FaleConoscoState extends State<FaleConosco> {
                         },
                       )
                     },
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    side: BorderSide(
-                      width: 1.0,
-                      color: Colors.black,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                    textStyle: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black))),
+                    style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        side: BorderSide(
+                          width: 1.0,
+                          color: Colors.black,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        textStyle: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black))),
+              ),
+            ],
           ),
-        ],
-      ),
-    ));
+        ),));
   }
 
   Future<Response> _sendFaleConosco() async {
